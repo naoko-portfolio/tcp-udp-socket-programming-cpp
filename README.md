@@ -39,6 +39,7 @@ server/
 
 
 ## UDP Communication Flow
+### code
 
 1. Set up the server address
 <img width="265" height="90" alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" />
@@ -56,14 +57,15 @@ server/
 <img width="330" height="227" alt="4" src="https://github.com/user-attachments/assets/839d44b8-11c7-45d0-bf26-b4e1dfc1e4da" />
 
 
-### Client
+### Client Output
+
 - Sent multiple messages (`aa`, `az`, `ha`, `hz`, `ma`, `mz`)
 - Received the closest matching word from the server.
 
 <img width="391" height="154" alt="5udp" src="https://github.com/user-attachments/assets/e48ffc98-6f83-4cbe-9e9a-48d77fbb744b" />
 
 
-### Server
+### Server Output
 - Received each request from the client.
 - Displayed the client's IP address, port number, and received message.
 
@@ -76,11 +78,16 @@ The server successfully received each request and returned the closest matching 
 <img width="160" height="377" alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" />
 
 
-##Question I had
+## Question I had
 **What information allows the server to know where to send its reply?**
+The server knows where to send the response because recvfrom() receives the client's IP address and port number along with the message.
 
 ## TCP Communication
+##### Converting UDP to TCP
 
+To create the TCP version, I copied the UDP client-server project into a new project folder and renamed the UDP classes to TCP classes. This allowed me to keep the same project structure while modifying the socket type and communication flow for TCP.
+
+koko
 
 ## TCP vs UDP
 put dwor and compare
