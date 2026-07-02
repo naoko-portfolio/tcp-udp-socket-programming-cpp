@@ -56,45 +56,28 @@ server/
 <img width="330" height="227" alt="4" src="https://github.com/user-attachments/assets/839d44b8-11c7-45d0-bf26-b4e1dfc1e4da" />
 
 
-
-Client
-   │
-   │ sendto()
-   ▼
-Server
-   │
-recvfrom()
-   │
-Process request
-   │
-sendto()
-   ▼
-Client
-recvfrom()
-
-From 127.0.0.1:55386 --> aa
-this means
-Client knows following
-client IP: 127.0.0.1
-Client Port: 55386
-Massage: aa
-
 ### Client
 - Sent multiple messages (`aa`, `az`, `ha`, `hz`, `ma`, `mz`)
 - Received the closest matching word from the server.
 
-(クライアントのスクショ)
+<img width="391" height="154" alt="5udp" src="https://github.com/user-attachments/assets/e48ffc98-6f83-4cbe-9e9a-48d77fbb744b" />
+
 
 ### Server
 - Received each request from the client.
 - Displayed the client's IP address, port number, and received message.
 
-(サーバーのスクショ)
+<img width="392" height="106" alt="6udp" src="https://github.com/user-attachments/assets/40e5f9c5-cea7-4f15-a1a9-383f0e5dfae3" />
 
 The server successfully received each request and returned the closest matching word to the client using UDP communication.
 
+### UDP Request-Response Flow
 
-What information allows the server to know where to send its reply?
+<img width="160" height="377" alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" />
+
+
+##Question I had
+**What information allows the server to know where to send its reply?**
 
 ## TCP Communication
 
