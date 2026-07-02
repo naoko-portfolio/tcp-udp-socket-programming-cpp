@@ -18,7 +18,6 @@ Features
 ## Structure
 
 client/
-
 ├── client.cpp
 
 ├── UDPClient.cpp
@@ -31,7 +30,9 @@ client/
 
 server/
 ├── server.cpp
+
 ├── UDPServer.cpp
+
 └── UDPServer.h
 
 
