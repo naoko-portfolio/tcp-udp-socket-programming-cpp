@@ -103,8 +103,7 @@ connect(sock, (sockaddr*:&serverAddr, sizeof(serverAddr));
 <img width="251" height="72" alt="9tcp" src="https://github.com/user-attachments/assets/215d8d91-de0e-443a-a897-84567c37b554" />
 
 ### Modify the Server Code
-Create a TCP socket (SOCK_STREAM)
-Call
+- Create a TCP socket (SOCK_STREAM)
 - bind()
 - listen()
 
