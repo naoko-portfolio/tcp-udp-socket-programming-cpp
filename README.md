@@ -87,6 +87,37 @@ The server knows where to send the response because recvfrom() receives the clie
 
 To create the TCP version, I copied the UDP client-server project into a new project folder and renamed the UDP classes to TCP classes. This allowed me to keep the same project structure while modifying the socket type and communication flow for TCP.
 
+### Modify the Client Code
+**Replace:** 
+- socket(AF_INET, SOCK_DGRAM, 0); -> socket(AF_INET, SOCK_STREAM, 0);
+<img width="197" height="77" alt="8tcp" src="https://github.com/user-attachments/assets/bac8ea34-2f08-4d47-9ea9-8f2db424e00f" />
+
+
+- sendto → send
+- recvfrom → recv
+<img width="170" height="108" alt="10tcp" src="https://github.com/user-attachments/assets/e9dbbafb-8ccb-49c4-8009-dcab38e09740" />
+
+**Add:**
+connect(sock, (sockaddr*:&serverAddr, sizeof(serverAddr));
+
+<img width="251" height="72" alt="9tcp" src="https://github.com/user-attachments/assets/215d8d91-de0e-443a-a897-84567c37b554" />
+
+### Modify the Server Code
+Create a TCP socket (SOCK_STREAM)
+Call
+- bind()
+- listen()
+
+<img width="284" height="209" alt="11tcp" src="https://github.com/user-attachments/assets/e8f13ea9-e26f-4095-ad6e-c98c6a49e2de" />
+
+In the run() function:
+create
+- accept() 
+- recv()
+- send()
+
+<img width="289" height="345" alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" />
+
 koko
 
 ## TCP vs UDP
