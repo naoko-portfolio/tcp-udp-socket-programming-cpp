@@ -117,14 +117,54 @@ create
 
 <img width="289" height="345" alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" />
 
-koko
 
 ## TCP vs UDP
 put dwor and compare
 
+TCP Connection
+
+Unlike UDP, TCP is connection-oriented. The client establishes a connection with the server using connect() only once. After the connection is established, send() and recv() use the existing connection, so the client does not need to specify the server's IP address and port number for every message. The connection remains active until it is closed.
+
+connect(IP, Port)
+send()
+↓
+
+recv()
+↓
+
+send()
+↓
+
+recv()
+↓
+
+close()
+
+UDP
+sendto(IP, Port)
+↓
+
+sendto(IP, Port)
+↓
+
+sendto(IP, Port)
+
+
+
 ## Wireshark Analysis
+koko
+
+
 
 ## Questions I Had
+
+Q: Why is TCP slower but more reliable than UDP? Does this relate to how they communicate?
+
+A: Yes. The communication method is one of the main reasons.
+
+UDP is connectionless. It sends data without establishing a connection or checking whether the data arrives successfully. This makes UDP fast, but packets may be lost or arrive out of order.
+TCP is connection-oriented. It first establishes a connection using connect(), then exchanges data through the established connection. TCP also confirms that data has been received correctly before continuing, making it slower but much more reliable.
+UDP prioritizes speed, while TCP prioritizes reliability.
 
 ## Reflection
 
