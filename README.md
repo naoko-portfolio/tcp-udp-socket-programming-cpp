@@ -155,11 +155,51 @@ sendto(IP, Port)
 
 
 ## Wireshark Analysis
-koko
+### UDP
+1. Open Wireshark
+2. Chose network
+3. Apply udp.port == 8080
+4. Run UDP server
+5. Run UDP client
+6. Apply "aa, ah, ha, hz, ma, mz" on client
+7. Apply "q" on client
+8. Stop wireshark netwark
+9. Start captering
+
+## Anlyze UDP networking
+Client
+
+<img width="478" height="221" alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" />
+
+Server
+<img width="481" height="149" alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" />
+Client port: 65243
+Server port: 8080
+RTT
+Request: 656.341608500
+Response: 656.343351800
+656.343351800 - 656.341608500=1.743 ms
+RTT= 1.743 ms
+
+### Observations
+
+- Each client request is immediately followed by a server response.
+- The server listens on port 8080, while the client uses a temporary port.
+- Request packets are 2 bytes because the client sends two-character messages.
+- Response packet sizes vary depending on the matched word.
+- All traffic uses 127.0.0.1 because the client and server run on the same computer.
+- No retransmissions were observed because UDP does not guarantee reliable delivery.
 
 
 
 ## Questions I Had
+What is RTT?
+RTT(Round-Trip Time) 
+Time from sending a request to receiving the response. Shorter represents faster networking.
+
+What do Len=29, Len=31, and Len=26 mean?
+Len represents the size of the UDP payload (data) in bytes. The request packets have Len=2 because the client sends two-character messages such as "aa" or "az". The response packets have different lengths (Len=29, Len=31, Len=26) because the server returns words of different lengths, resulting in different payload sizes.
+
 
 Q: Why is TCP slower but more reliable than UDP? Does this relate to how they communicate?
 
