@@ -125,6 +125,9 @@ TCP Connection
 
 Unlike UDP, TCP is connection-oriented. The client establishes a connection with the server using connect() only once. After the connection is established, send() and recv() use the existing connection, so the client does not need to specify the server's IP address and port number for every message. The connection remains active until it is closed.
 
+<img width="1169" height="1345" alt="ChatGPT Image Jul 4, 2026, 12_48_54 PM" src="https://github.com/user-attachments/assets/84859691-db7a-42f3-9b67-808dffed1e3b" />
+
+
 connect(IP, Port)
 send()
 ↓
