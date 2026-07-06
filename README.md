@@ -14,6 +14,14 @@ This project was originally completed as part of my Data Communication Programmi
 
 ## Environment
 
+- Operating System: Windows 11
+- Programming Language: C++
+- Compiler: g++ (MinGW)
+- IDE: Visual Studio Code
+- Networking Library: Winsock2
+- Packet Analyzer: Wireshark 4.6
+- Protocols: UDP, TCP
+
 ## Structure
 
 client/
@@ -39,7 +47,7 @@ server/
 
 
 ## UDP Communication Flow
-### code
+### Key Code Steps
 
 1. Set up the server address
 <img width="265" height="90" alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" />
@@ -71,24 +79,26 @@ server/
 
 <img width="392" height="106" alt="6udp" src="https://github.com/user-attachments/assets/40e5f9c5-cea7-4f15-a1a9-383f0e5dfae3" />
 
-The server successfully received each request and returned the closest matching word to the client using UDP communication.
+The server successfully received each request and returned the closest matching word using UDP communication.
 
 ### UDP Request-Response Flow
-
+The diagram below shows how the client and server exchange a request and response using UDP.
 <img width="160" height="377" alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" />
 
 
 ## Question I had
+
 **What information allows the server to know where to send its reply?**
-The server knows where to send the response because recvfrom() receives the client's IP address and port number along with the message.
+
+`recvfrom()` provides the client's IP address, port number, and message. The server uses the IP address and port number to send the response back to the correct client.
 
 ## TCP Communication
-##### Converting UDP to TCP
+### Converting UDP to TCP
 
-To create the TCP version, I copied the UDP client-server project into a new project folder and renamed the UDP classes to TCP classes. This allowed me to keep the same project structure while modifying the socket type and communication flow for TCP.
+To create the TCP version, I copied the UDP client-server project into a new folder and renamed the UDP classes to TCP classes. I then modified the socket type and communication flow to use TCP instead of UDP.
 
 ### Modify the Client Code
-**Replace:** 
+**Changes:**
 - socket(AF_INET, SOCK_DGRAM, 0); -> socket(AF_INET, SOCK_STREAM, 0);
 <img width="197" height="77" alt="8tcp" src="https://github.com/user-attachments/assets/bac8ea34-2f08-4d47-9ea9-8f2db424e00f" />
 
@@ -98,26 +108,33 @@ To create the TCP version, I copied the UDP client-server project into a new pro
 <img width="170" height="108" alt="10tcp" src="https://github.com/user-attachments/assets/e9dbbafb-8ccb-49c4-8009-dcab38e09740" />
 
 **Add:**
-connect(sock, (sockaddr*:&serverAddr, sizeof(serverAddr));
+connect(sock, (sockaddr*)&serverAddr, sizeof(serverAddr));
 
 <img width="251" height="72" alt="9tcp" src="https://github.com/user-attachments/assets/215d8d91-de0e-443a-a897-84567c37b554" />
 
 ### Modify the Server Code
-- Create a TCP socket (SOCK_STREAM)
-- bind()
-- listen()
+The server performs the following steps:
+
+- Create a TCP socket (`SOCK_STREAM`)
+- Bind the socket to port 8080
+- Listen for incoming connections
 
 <img width="284" height="209" alt="11tcp" src="https://github.com/user-attachments/assets/e8f13ea9-e26f-4095-ad6e-c98c6a49e2de" />
 
-In the run() function:
-create
-- accept() 
+In the `run()` function:
+
+- accept()
 - recv()
 - send()
 
 <img width="289" height="345" alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" />
 
+### Establishing a TCP Connection
 
+Unlike UDP, TCP requires a connection before data can be exchanged. The client establishes the connection using `connect()`, and the server accepts it using `accept()`. Once the connection is established, both sides communicate using `send()` and `recv()`.
+
+
+ここまで正解
 ## TCP vs UDP
 put dwor and compare
 
