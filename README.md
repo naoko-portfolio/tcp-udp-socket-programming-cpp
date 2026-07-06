@@ -135,41 +135,6 @@ Unlike UDP, TCP requires a connection before data can be exchanged. The client e
 
 
 ここまで正解
-## TCP vs UDP
-put dwor and compare
-
-TCP Connection
-
-Unlike UDP, TCP is connection-oriented. The client establishes a connection with the server using connect() only once. After the connection is established, send() and recv() use the existing connection, so the client does not need to specify the server's IP address and port number for every message. The connection remains active until it is closed.
-
-<img width="1169" height="1345" alt="ChatGPT Image Jul 4, 2026, 12_48_54 PM" src="https://github.com/user-attachments/assets/84859691-db7a-42f3-9b67-808dffed1e3b" />
-
-
-connect(IP, Port)
-send()
-↓
-
-recv()
-↓
-
-send()
-↓
-
-recv()
-↓
-
-close()
-
-UDP
-sendto(IP, Port)
-↓
-
-sendto(IP, Port)
-↓
-
-sendto(IP, Port)
-
-
 
 ## Wireshark Analysis
 ### UDP
@@ -209,6 +174,8 @@ RTT= 1.743 ms
 
 
 
+
+
 ## Questions I Had
 What is RTT?
 RTT(Round-Trip Time) 
@@ -225,6 +192,86 @@ A: Yes. The communication method is one of the main reasons.
 UDP is connectionless. It sends data without establishing a connection or checking whether the data arrives successfully. This makes UDP fast, but packets may be lost or arrive out of order.
 TCP is connection-oriented. It first establishes a connection using connect(), then exchanges data through the established connection. TCP also confirms that data has been received correctly before continuing, making it slower but much more reliable.
 UDP prioritizes speed, while TCP prioritizes reliability.
+
+### TCP
+1. Open Wireshark
+2. Chose network
+3. Apply tcp.port == 8080
+4. Run TCP server
+5. Run TCP client
+6. Apply "aa, ah, ha, hz, ma, mz" on client
+7. Apply "q" on client
+8. Stop wireshark netwark
+9. Start captering
+
+
+## Anlyze UDP networking
+Client
+
+<img width="483" height="187" alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" /> 
+
+Server
+
+<img width="562" height="230" alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" />
+
+
+Client port: 55865
+Server port: 8080
+RTT
+Request: 656.341608500
+Response: 656.343351800
+656.343351800 - 656.341608500=1.743 ms
+RTT= 1.743 ms
+
+
+
+
+### Observations
+
+
+
+## Question I Had
+
+**Why do I only see one `SYN` and one `SYN, ACK` packet even though I sent six messages?**
+
+At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning. After the connection is established, the client and server can continue exchanging messages without repeating the handshake.
+
+
+## TCP vs UDP
+put dwor and compare
+
+TCP Connection
+
+Unlike UDP, TCP is connection-oriented. The client establishes a connection with the server using connect() only once. After the connection is established, send() and recv() use the existing connection, so the client does not need to specify the server's IP address and port number for every message. The connection remains active until it is closed.
+
+<img width="1169" height="1345" alt="ChatGPT Image Jul 4, 2026, 12_48_54 PM" src="https://github.com/user-attachments/assets/84859691-db7a-42f3-9b67-808dffed1e3b" />
+
+
+connect(IP, Port)
+send()
+↓
+
+recv()
+↓
+
+send()
+↓
+
+recv()
+↓
+
+close()
+
+UDP
+sendto(IP, Port)
+↓
+
+sendto(IP, Port)
+↓
+
+sendto(IP, Port)
+
+
 
 ## Reflection
 
