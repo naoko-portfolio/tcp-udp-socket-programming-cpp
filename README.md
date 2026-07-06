@@ -134,7 +134,6 @@ In the `run()` function:
 Unlike UDP, TCP requires a connection before data can be exchanged. The client establishes the connection using `connect()`, and the server accepts it using `accept()`. Once the connection is established, both sides communicate using `send()` and `recv()`.
 
 
-ここまで正解
 
 ## Wireshark Analysis
 
