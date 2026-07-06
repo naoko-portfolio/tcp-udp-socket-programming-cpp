@@ -137,18 +137,19 @@ Unlike UDP, TCP requires a connection before data can be exchanged. The client e
 ここまで正解
 
 ## Wireshark Analysis
-### UDP
-1. Open Wireshark
-2. Chose network
-3. Apply udp.port == 8080
-4. Run UDP server
-5. Run UDP client
-6. Apply "aa, ah, ha, hz, ma, mz" on client
-7. Apply "q" on client
-8. Stop wireshark netwark
-9. Start captering
 
-## Anlyze UDP networking
+### UDP
+1. Open Wireshark.
+2. Select the loopback network adapter.
+3. Apply the display filter: `udp.port == 8080`.
+4. Start capturing packets.
+5. Run the UDP server.
+6. Run the UDP client.
+7. Send the following messages: `aa`, `az`, `ha`, `hz`, `ma`, `mz`.
+8. Enter `q` to terminate the client.
+9. Stop packet capture.
+
+## UDP Traffic Analysis
 Client
 
 <img width="478" height="221" alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" />
@@ -157,82 +158,116 @@ Server
 <img width="481" height="149" alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" />
 Client port: 65243
 Server port: 8080
-RTT
-Request: 656.341608500
-Response: 656.343351800
-656.343351800 - 656.341608500=1.743 ms
-RTT= 1.743 ms
+
+### RTT
+
+Request Time: 656.341608500
+
+Response Time: 656.343351800
+
+RTT = 656.343351800 − 656.341608500
+
+= 0.001743300 sec
+
+= 1.743 ms
 
 ### Observations
 
 - Each client request is immediately followed by a server response.
 - The server listens on port 8080, while the client uses a temporary port.
 - Request packets are 2 bytes because the client sends two-character messages.
-- Response packet sizes vary depending on the matched word.
+- Response packet sizes vary because the matched words have different lengths.
 - All traffic uses 127.0.0.1 because the client and server run on the same computer.
 - No retransmissions were observed because UDP does not guarantee reliable delivery.
 
 
-
-
-
 ## Questions I Had
-What is RTT?
-RTT(Round-Trip Time) 
-Time from sending a request to receiving the response. Shorter represents faster networking.
 
-What do Len=29, Len=31, and Len=26 mean?
-Len represents the size of the UDP payload (data) in bytes. The request packets have Len=2 because the client sends two-character messages such as "aa" or "az". The response packets have different lengths (Len=29, Len=31, Len=26) because the server returns words of different lengths, resulting in different payload sizes.
+### What is RTT?
+
+RTT (Round-Trip Time) is the time it takes for a request to travel from the client to the server and for the response to return to the client. A shorter RTT generally indicates faster network communication.
 
 
-Q: Why is TCP slower but more reliable than UDP? Does this relate to how they communicate?
+### What do `Len=29`, `Len=31`, and `Len=26` mean?
 
-A: Yes. The communication method is one of the main reasons.
+`Len` represents the size of the UDP payload (data) in bytes.
 
-UDP is connectionless. It sends data without establishing a connection or checking whether the data arrives successfully. This makes UDP fast, but packets may be lost or arrive out of order.
-TCP is connection-oriented. It first establishes a connection using connect(), then exchanges data through the established connection. TCP also confirms that data has been received correctly before continuing, making it slower but much more reliable.
-UDP prioritizes speed, while TCP prioritizes reliability.
+- Request packets have `Len=2` because the client sends two-character messages such as `"aa"` or `"az"`.
+- Response packets have different lengths (`Len=29`, `Len=31`, `Len=26`) because the server returns words of different lengths.
+
+
+### Why is TCP slower but more reliable than UDP?
+
+UDP is **connectionless**. It sends data without establishing a connection or confirming that the data has been delivered. This makes UDP fast, but packets may be lost or arrive out of order.
+
+TCP is **connection-oriented**. It first establishes a connection using `connect()`, then exchanges data through the established connection. TCP also acknowledges received data, making communication more reliable but slightly slower.
+
+**In short:**
+- **UDP prioritizes speed.**
+- **TCP prioritizes reliability.**
+
+
+## Summary
+
+Using Wireshark, I observed the differences between UDP and TCP communication.
+
+- UDP sends packets without establishing a connection.
+- TCP establishes a connection using the three-way handshake before exchanging data.
+- Both protocols showed very low RTT because the client and server were running on the same computer (`127.0.0.1`).
 
 ### TCP
-1. Open Wireshark
-2. Chose network
-3. Apply tcp.port == 8080
-4. Run TCP server
-5. Run TCP client
-6. Apply "aa, ah, ha, hz, ma, mz" on client
-7. Apply "q" on client
-8. Stop wireshark netwark
-9. Start captering
 
+1. Open Wireshark.
+2. Select the loopback network adapter.
+3. Apply the display filter: `tcp.port == 8080`.
+4. Start capturing packets.
+5. Run the TCP server.
+6. Run the TCP client.
+7. Send the following messages: `aa`, `az`, `ha`, `hz`, `ma`, `mz`.
+8. Enter `q` to terminate the client.
+9. Stop packet capture.
 
-## Anlyze TCP networking
-Client
+---
 
-<img width="483" height="187" alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" /> 
+## TCP Traffic Analysis
 
-Server
+### Client
+
+<img width="483" height="187" alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" />
+
+### Server
 
 <img width="562" height="230" alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" />
 
+### RTT
 
-Client port: 55865
-Server port: 8080
-RTT
-Request: 160.733430500
-Response: 160.733626900
-160.733626900 - 160.733430500=0.0001964
-RTT=0.196 ms
+- **Client Port:** 55865
+- **Server Port:** 8080
 
+Request Time: **160.733430500**
+
+Response Time: **160.733626900**
+
+RTT = 160.733626900 − 160.733430500
+
+= 0.0001964 sec
+
+= **0.196 ms**
 
 ### Observations
 
+- TCP establishes a connection using the three-way handshake (`SYN` → `SYN, ACK` → `ACK`).
+- After the connection is established, multiple messages are exchanged without repeating the handshake.
+- Data transfer uses `PSH, ACK` packets, and each transmission is acknowledged with `ACK`.
+- Both the client and server communicate through the established connection.
+- The RTT was very small because the client and server were running on the same computer (`127.0.0.1`).
 
 
 ## Question I Had
 
 **Why do I only see one `SYN` and one `SYN, ACK` packet even though I sent six messages?**
 
-At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning. After the connection is established, the client and server can continue exchanging messages without repeating the handshake.
+At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning. After the connection is established, the client and server can continue exchanging multiple messages without repeating the handshake.
 
 
 ## TCP vs UDP
@@ -269,7 +304,7 @@ sendto(IP, Port)
 
 sendto(IP, Port)
 
-## Wireshark Analysis
+
 
 ### RTT Observation
 
@@ -280,6 +315,8 @@ I measured the round-trip time (RTT) by calculating the time difference between 
 - The RTT values were very small because both the client and server were running on the same computer (`127.0.0.1`).
 - UDP and TCP both showed low RTT values in this local environment.
 - Therefore, RTT was useful for observing the request-response timing, but it was not suitable for comparing the real-world performance of UDP and TCP.
+
+The table below summarizes the key differences between UDP and TCP observed during this project.
 
 | Protocol       | UDP                      | TCP                             |
 | -------------- | ------------------------ | ------------------------------- |
