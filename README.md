@@ -205,7 +205,7 @@ UDP prioritizes speed, while TCP prioritizes reliability.
 9. Start captering
 
 
-## Anlyze UDP networking
+## Anlyze TCP networking
 Client
 
 <img width="483" height="187" alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" /> 
@@ -218,12 +218,10 @@ Server
 Client port: 55865
 Server port: 8080
 RTT
-Request: 656.341608500
-Response: 656.343351800
-656.343351800 - 656.341608500=1.743 ms
-RTT= 1.743 ms
-
-
+Request: 160.733430500
+Response: 160.733626900
+160.733626900 - 160.733430500=0.0001964
+RTT=0.196 ms
 
 
 ### Observations
@@ -271,6 +269,26 @@ sendto(IP, Port)
 
 sendto(IP, Port)
 
+## Wireshark Analysis
+
+### RTT Observation
+
+I measured the round-trip time (RTT) by calculating the time difference between a client request and the corresponding server response in Wireshark.
+
+**Observation**
+
+- The RTT values were very small because both the client and server were running on the same computer (`127.0.0.1`).
+- UDP and TCP both showed low RTT values in this local environment.
+- Therefore, RTT was useful for observing the request-response timing, but it was not suitable for comparing the real-world performance of UDP and TCP.
+
+| Protocol       | UDP                      | TCP                             |
+| -------------- | ------------------------ | ------------------------------- |
+| Connection     | Connectionless           | Connection-oriented             |
+| Handshake      | None                     | Three-way handshake             |
+| Reliability    | No guarantee             | Reliable delivery               |
+| ACK            | No                       | Yes                             |
+| Retransmission | No                       | Yes (if needed)                 |
+| Functions      | `sendto()`, `recvfrom()` | `connect()`, `send()`, `recv()` |
 
 
 ## Reflection
