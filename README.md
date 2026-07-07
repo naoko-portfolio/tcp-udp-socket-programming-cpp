@@ -52,7 +52,7 @@ server/
 
 ### UDP Request-Response Flow
 
-<img alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" width="500" />
+<img alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" width="250" />
 
 
 ### Implementation Steps
