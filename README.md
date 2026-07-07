@@ -1,15 +1,16 @@
 # TCP and UDP Socket Programming in C++
 
 ## Overview
-This project was completed as part of my Data Communication Programming course. Using instructor-provided starter code, I implemented UDP and TCP client-server communication in C++, converted the UDP application to TCP, and analyzed network traffic using Wireshark.
+Using instructor-provided starter code, I implemented UDP and TCP client-server communication in C++, converted the UDP application to TCP, and analyzed network traffic using Wireshark.
 
 ## Goal
-Implement UDP and TCP client-server communication in C++.
-Understand the differences between UDP and TCP.
-Analyze network traffic using Wireshark.
+- Implement UDP and TCP client-server communication in C++.
+- Understand the differences between UDP and TCP.
+- Analyze network traffic using Wireshark.
+
 
 ## Why I Started This Project
-This project was originally completed as part of my Data Communication Programming course. Although I found the topic interesting, I didn't have enough time during the course to fully understand how everything worked or explore it in depth. I decided to revisit the project, deepen my understanding, and document what I learned on GitHub so I can review it in the future. I had also learned how to use Wireshark in a previous project, so this was a great opportunity to compare UDP and TCP traffic and better understand how they handle data communication differently.
+This project was originally completed as part of my Data Communication Programming course. Although I found the topic interesting, I didn't have enough time during the course to fully understand how everything worked or explore it in depth. I decided to revisit the project, deepen my understanding, and document what I learned on GitHub so I can review it in the future. I had also learned how to use Wireshark in a previous project, so this was a great opportunity to compare UDP and TCP traffic and better understand how each protocol handles communication.
 
 
 ## Environment
@@ -20,6 +21,7 @@ This project was originally completed as part of my Data Communication Programmi
 - IDE: Visual Studio Code
 - Networking Library: Winsock2
 - Packet Analyzer: Wireshark 4.6
+- Diagram Tool: Figma
 - Protocols: UDP, TCP
 
 ## Structure
