@@ -80,14 +80,14 @@ server/
 - Sent multiple messages (`aa`, `az`, `ha`, `hz`, `ma`, `mz`)
 - Received the closest matching word from the server.
 
-<img width="391" height="154" alt="5udp" src="https://github.com/user-attachments/assets/e48ffc98-6f83-4cbe-9e9a-48d77fbb744b" />
+<img alt="5udp" src="https://github.com/user-attachments/assets/e48ffc98-6f83-4cbe-9e9a-48d77fbb744b" width="500" />
 
 
 ### Server Output
 - Received each request from the client.
 - Displayed the client's IP address, port number, and received message.
 
-<img width="392" height="106" alt="6udp" src="https://github.com/user-attachments/assets/40e5f9c5-cea7-4f15-a1a9-383f0e5dfae3" />
+<img alt="6udp" src="https://github.com/user-attachments/assets/40e5f9c5-cea7-4f15-a1a9-383f0e5dfae3" width="500" />
 
 
 
@@ -105,17 +105,17 @@ To create the TCP version, I copied the UDP client-server project into a new fol
 ### Modify the Client Code
 **Changes:**
 - socket(AF_INET, SOCK_DGRAM, 0); -> socket(AF_INET, SOCK_STREAM, 0);
-<img width="197" height="77" alt="8tcp" src="https://github.com/user-attachments/assets/bac8ea34-2f08-4d47-9ea9-8f2db424e00f" />
+<img alt="8tcp" src="https://github.com/user-attachments/assets/bac8ea34-2f08-4d47-9ea9-8f2db424e00f" width="500" />
 
 
 - sendto → send
 - recvfrom → recv
-<img width="170" height="108" alt="10tcp" src="https://github.com/user-attachments/assets/e9dbbafb-8ccb-49c4-8009-dcab38e09740" />
+<img alt="10tcp" src="https://github.com/user-attachments/assets/e9dbbafb-8ccb-49c4-8009-dcab38e09740" width="500" />
 
 **Add:**
 connect(sock, (sockaddr*)&serverAddr, sizeof(serverAddr));
 
-<img width="251" height="72" alt="9tcp" src="https://github.com/user-attachments/assets/215d8d91-de0e-443a-a897-84567c37b554" />
+<img alt="9tcp" src="https://github.com/user-attachments/assets/215d8d91-de0e-443a-a897-84567c37b554" width="500" />
 
 ### Modify the Server Code
 The server performs the following steps:
@@ -124,7 +124,7 @@ The server performs the following steps:
 - Bind the socket to port 8080
 - Listen for incoming connections
 
-<img width="284" height="209" alt="11tcp" src="https://github.com/user-attachments/assets/e8f13ea9-e26f-4095-ad6e-c98c6a49e2de" />
+<img alt="11tcp" src="https://github.com/user-attachments/assets/e8f13ea9-e26f-4095-ad6e-c98c6a49e2de" width="500"/>
 
 In the `run()` function:
 
@@ -132,7 +132,7 @@ In the `run()` function:
 - recv()
 - send()
 
-<img width="289" height="345" alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" />
+<img alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" width="500"/>
 
 ### Establishing a TCP Connection
 
@@ -156,10 +156,10 @@ Unlike UDP, TCP requires a connection before data can be exchanged. The client e
 ## UDP Traffic Analysis
 Client
 
-<img width="478" height="221" alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" />
+<img alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" width="500" />
 
 Server
-<img width="481" height="149" alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" />
+<img alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" width="500" />
 Client port: 65243
 Server port: 8080
 
@@ -237,11 +237,11 @@ Using Wireshark, I observed the differences between UDP and TCP communication.
 
 ### Client
 
-<img width="483" height="187" alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" />
+<img alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" width="500" />
 
 ### Server
 
-<img width="562" height="230" alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" />
+<img alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" width="500" />
 
 ### RTT
 
@@ -278,12 +278,12 @@ At first, I thought TCP would check the connection every time I sent a message. 
 
 
 ### TCP Connection
-<img width="281" height="373" alt="TCP connection" src="https://github.com/user-attachments/assets/7d65f434-63ca-4ab4-a8d2-a406cb441cbb" />
+<img alt="TCP connection" src="https://github.com/user-attachments/assets/7d65f434-63ca-4ab4-a8d2-a406cb441cbb" width="500" />
 
 After connect(), the client uses send() and recv() without specifying IP address and port. The connection stays until it is closed.
 
 ### UDP Connection
-<img width="282" height="329" alt="UDP connection" src="https://github.com/user-attachments/assets/0b315d35-5e0b-4534-885f-4e902a419121" />
+<img alt="UDP connection" src="https://github.com/user-attachments/assets/0b315d35-5e0b-4534-885f-4e902a419121" width="500" />
 
 Each time data is sent, the destination IP address and port number must be specified
 
