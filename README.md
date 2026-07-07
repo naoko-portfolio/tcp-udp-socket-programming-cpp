@@ -270,40 +270,17 @@ At first, I thought TCP would check the connection every time I sent a message. 
 
 
 ## TCP vs UDP
-put dwor and compare
-
-TCP Connection
-
-Unlike UDP, TCP is connection-oriented. The client establishes a connection with the server using connect() only once. After the connection is established, send() and recv() use the existing connection, so the client does not need to specify the server's IP address and port number for every message. The connection remains active until it is closed.
-
-<img width="1169" height="1345" alt="ChatGPT Image Jul 4, 2026, 12_48_54 PM" src="https://github.com/user-attachments/assets/84859691-db7a-42f3-9b67-808dffed1e3b" />
 
 
-connect(IP, Port)
-send()
-↓
+### TCP Connection
+<img width="281" height="373" alt="TCP connection" src="https://github.com/user-attachments/assets/7d65f434-63ca-4ab4-a8d2-a406cb441cbb" />
 
-recv()
-↓
+After connect(), the client uses send() and recv() without specifying IP address and port. The connection stays until it is closed.
 
-send()
-↓
+### UDP Connection
+<img width="282" height="329" alt="UDP connection" src="https://github.com/user-attachments/assets/0b315d35-5e0b-4534-885f-4e902a419121" />
 
-recv()
-↓
-
-close()
-
-UDP
-sendto(IP, Port)
-↓
-
-sendto(IP, Port)
-↓
-
-sendto(IP, Port)
-
-
+Each time data is sent, the destination IP address and port number must be specified
 
 ### RTT Observation
 
@@ -327,15 +304,43 @@ The table below summarizes the key differences between UDP and TCP observed duri
 | Functions      | `sendto()`, `recvfrom()` | `connect()`, `send()`, `recv()` |
 
 
+
+## Question I Had
+
+**If UDP has to specify the server's IP address and port number every time, why is it faster than TCP?**
+
+At first, I thought TCP would be faster because it remembers the server's address after `connect()`, while UDP specifies the destination address every time with `sendto()`.
+
+However, I learned that specifying the destination address takes very little time. The main reason TCP is slower is that it establishes a connection, acknowledges received data (ACK), retransmits lost packets when necessary, and guarantees reliable, ordered delivery. UDP skips these reliability features, making it much faster.
+**Key takeaway:** UDP prioritizes speed, while TCP prioritizes reliability.
+
+
 ## Reflection
 
-What I learned
+Before this project, I knew that UDP is faster than TCP and that TCP is more reliable, but it was only theoretical knowledge. By implementing both protocols, capturing packets with Wireshark, and analyzing the communication, I gained a much deeper understanding of how UDP and TCP actually work.
+
+This hands-on experience made networking much more interesting to me. I especially enjoyed drawing communication diagrams and visualizing how data flows between the client and the server. It helped me connect networking concepts with real packet behavior and strengthened my understanding of socket programming.
 
 
-## Error occrned
+## What I Learned
+
+At the beginning of this project, I was confused about why `ls` did not work and why I had to use `dir`. I used to use a Mac and learned Linux at that time, so I was used to typing `ls`. Since I am now using Windows Command Prompt, I needed to use `dir` instead. After looking into the reason, I realized that `ls` is a Linux/macOS command, while `dir` is the equivalent command in Windows.
 
 ## Skills Demonstrated
 
-ls doent'work dir
+## Skills Demonstrated
 
-the last
+- C++
+- Socket Programming (Winsock2)
+- UDP & TCP Client-Server Development
+- TCP Three-Way Handshake
+- Packet Analysis with Wireshark
+- Round-Trip Time (RTT) Analysis
+- Network Troubleshooting
+- Protocol Comparison (UDP vs TCP)
+- Command-Line Development (Windows Command Prompt)
+
+## Future Improvements
+
+This project focused on the fundamentals of networking. As I continue learning, I want to take on more challenging networking projects, deepen my understanding, and gradually improve my technical skills through hands-on experience.
+
