@@ -154,12 +154,15 @@ Unlike UDP, TCP requires a connection before data can be exchanged. The client e
 9. Stop packet capture.
 
 ## UDP Traffic Analysis
-Client
+**Client**
 
 <img alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" width="500" />
 
-Server
+**Server**
+
 <img alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" width="500" />
+
+
 Client port: 65243
 Server port: 8080
 
