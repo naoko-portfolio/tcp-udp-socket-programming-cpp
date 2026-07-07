@@ -49,7 +49,13 @@ server/
 
 
 ## UDP Communication Flow
-### Key Code Steps
+
+### UDP Request-Response Flow
+
+<img width="160" height="377" alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" />
+
+
+### Implementation Steps
 
 1. Set up the server address
 <img width="265" height="90" alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" />
@@ -67,6 +73,7 @@ server/
 <img width="330" height="227" alt="4" src="https://github.com/user-attachments/assets/839d44b8-11c7-45d0-bf26-b4e1dfc1e4da" />
 
 
+
 ### Client Output
 
 - Sent multiple messages (`aa`, `az`, `ha`, `hz`, `ma`, `mz`)
@@ -81,14 +88,9 @@ server/
 
 <img width="392" height="106" alt="6udp" src="https://github.com/user-attachments/assets/40e5f9c5-cea7-4f15-a1a9-383f0e5dfae3" />
 
-The server successfully received each request and returned the closest matching word using UDP communication.
-
-### UDP Request-Response Flow
-The diagram below shows how the client and server exchange a request and response using UDP.
-<img width="160" height="377" alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" />
 
 
-## Question I had
+## Questions I had
 
 **What information allows the server to know where to send its reply?**
 
