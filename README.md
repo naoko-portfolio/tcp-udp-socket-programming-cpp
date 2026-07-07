@@ -58,23 +58,20 @@ server/
 ### Implementation Steps
 
 1. Set up the server address
-<p align="center">
-<img alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" width="45%" />
+
+<img alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" width="500" />
+
 2. Send the user message using `sendto()`
-<img alt="2" src="https://github.com/user-attachments/assets/9e0dfc2c-fea2-4a47-988b-8e0ca2ee3df4" width="45%" />
-</p>
 
-
-
-
+<img alt="2" src="https://github.com/user-attachments/assets/9e0dfc2c-fea2-4a47-988b-8e0ca2ee3df4" width="500" />
 
 3. Receive the server response using `recvfrom()`
 
-<img width="160" height="139" alt="3" src="https://github.com/user-attachments/assets/98579348-cab7-4e67-9c96-73f623b88349" />
+<img alt="3" src="https://github.com/user-attachments/assets/98579348-cab7-4e67-9c96-73f623b88349" width="500" />
 
 4. Display the server response
 
-<img width="330" height="227" alt="4" src="https://github.com/user-attachments/assets/839d44b8-11c7-45d0-bf26-b4e1dfc1e4da" />
+<img alt="4" src="https://github.com/user-attachments/assets/839d44b8-11c7-45d0-bf26-b4e1dfc1e4da" width="500" />
 
 
 
