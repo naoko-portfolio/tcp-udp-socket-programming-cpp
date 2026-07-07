@@ -60,15 +60,15 @@ server/
 1. Set up the server address
 < align="center">
 <img alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" width="45%" />
-<img alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" width="45%" />
+
+2. Send the user message using `sendto()`
+<img alt="2" src="https://github.com/user-attachments/assets/9e0dfc2c-fea2-4a47-988b-8e0ca2ee3df4" width="45%" />
+
 </p>
 
 
-<img width="265" height="90" alt="1" src="https://github.com/user-attachments/assets/b79b4a8a-894f-4716-9f8f-9da44539913b" />
 
-3. Send the user message using `sendto()`
 
-<img width="351" height="251" alt="2" src="https://github.com/user-attachments/assets/9e0dfc2c-fea2-4a47-988b-8e0ca2ee3df4" />
 
 3. Receive the server response using `recvfrom()`
 
