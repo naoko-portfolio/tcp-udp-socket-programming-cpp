@@ -137,7 +137,8 @@ In the `run()` function:
 
 ### UDP
 
-<img alt="wireshark4" src="https://github.com/user-attachments/assets/3c706531-22cd-4456-86c1-818891f82658" width="500" />
+<img alt="wireshark4" src="https://github.com/user-attachments/assets/d884e475-f996-4a8b-ba0d-67dbe132794b" width="500" />
+
 
 1. Open Wireshark.
 2. Select the loopback network adapter.
@@ -211,7 +212,7 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 
 ### TCP
 
-<img alt="wireshark7" src="https://github.com/user-attachments/assets/7bd7ac99-5d41-4bb3-bc3f-ac35c3d91b52" width="500" />
+<img alt="wireshark7" src="https://github.com/user-attachments/assets/8a3e82c4-fdc7-43b6-9ee1-1b237805f150" width="500" />
 
 1. Open Wireshark.
 2. Select the loopback network adapter.
