@@ -135,7 +135,7 @@ In the `run()` function:
 
 ### Client Output
 
-- Sent multiple messages (aa, az, ha, hz, ma, mz)
+- Sent multiple messages (`aa`, `az`, `ha`, `hz`, `ma`, `mz`)
 - Received the closest matching word from the server.
 
 <img alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" width="500" />
