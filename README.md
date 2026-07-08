@@ -262,18 +262,19 @@ RTT = 160.733626900 − 160.733430500
 At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning of the connection. After the connection is established, the client and server can continue exchanging multiple messages without repeating the handshake.
 
 
-## TCP vs UDP
-
-
-### TCP Connection
-<img alt="TCP connection" src="https://github.com/user-attachments/assets/7d65f434-63ca-4ab4-a8d2-a406cb441cbb" width="500" />
-
-After connect(), the client uses send() and recv() without specifying IP address and port. The connection stays until it is closed.
+## UDP vs TCP
 
 ### UDP Connection
-<img alt="UDP connection" src="https://github.com/user-attachments/assets/0b315d35-5e0b-4534-885f-4e902a419121" width="500" />
+
+<img width="287" height="335" alt="UDP connection" src="https://github.com/user-attachments/assets/b092997f-1f66-4adb-bb70-45b2b5af9ccb" />
 
 Each time data is sent, the destination IP address and port number must be specified
+
+### TCP Connection
+
+<img width="289" height="377" alt="TCP connection" src="https://github.com/user-attachments/assets/72a6ba66-8ea2-4747-a05e-0717583c98a6" />
+
+After connect(), the client uses send() and recv() without specifying IP address and port. The connection stays until it is closed.
 
 ### RTT Observation
 
@@ -305,19 +306,19 @@ The table below summarizes the key differences between UDP and TCP observed duri
 At first, I thought TCP would be faster because it remembers the server's address after `connect()`, while UDP specifies the destination address every time with `sendto()`.
 
 However, I learned that specifying the destination address takes very little time. The main reason TCP is slower is that it establishes a connection, acknowledges received data (ACK), retransmits lost packets when necessary, and guarantees reliable, ordered delivery. UDP skips these reliability features, making it much faster.
-**Key takeaway:** UDP prioritizes speed, while TCP prioritizes reliability.
+The key takeaway is that UDP prioritizes speed, while TCP prioritizes reliability.
 
 
 ## Reflection
 
-Before this project, I knew that UDP is faster than TCP and that TCP is more reliable, but it was only theoretical knowledge. By implementing both protocols, capturing packets with Wireshark, and analyzing the communication, I gained a much deeper understanding of how UDP and TCP actually work.
+Before this project, I knew that UDP is faster than TCP and that TCP is more reliable, but my understanding was mostly theoretical. By implementing both protocols, capturing packets with Wireshark, and analyzing the communication, I gained a much deeper understanding of how UDP and TCP actually work.
 
 This hands-on experience made networking much more interesting to me. I especially enjoyed drawing communication diagrams and visualizing how data flows between the client and the server. It helped me connect networking concepts with real packet behavior and strengthened my understanding of socket programming.
 
 
 ## What I Learned
 
-At the beginning of this project, I was confused about why `ls` did not work and why I had to use `dir`. I used to use a Mac and learned Linux at that time, so I was used to typing `ls`. Since I am now using Windows Command Prompt, I needed to use `dir` instead. After looking into the reason, I realized that `ls` is a Linux/macOS command, while `dir` is the equivalent command in Windows.
+At the beginning of this project, I was confused about why the `ls` command did not work and why I had to use `dir`. I used to use a Mac and learned Linux command-line basics at that time, so I was used to typing `ls`. Since I am now using Windows Command Prompt, I needed to use `dir` instead. After looking into the reason, I realized that `ls` is a Linux/macOS command, while `dir` is the equivalent command in Windows.
 
 
 ## Skills Demonstrated
@@ -325,12 +326,12 @@ At the beginning of this project, I was confused about why `ls` did not work and
 - C++
 - Socket Programming (Winsock2)
 - UDP & TCP Client-Server Development
-- TCP Three-Way Handshake
 - Packet Analysis with Wireshark
-- Round-Trip Time (RTT) Analysis
+- TCP Three-Way Handshake
+- RTT Analysis
 - Network Troubleshooting
-- Protocol Comparison (UDP vs TCP)
-- Command-Line Development (Windows Command Prompt)
+- Protocol Comparison
+- Windows Command Prompt
 
 ## Future Improvements
 
