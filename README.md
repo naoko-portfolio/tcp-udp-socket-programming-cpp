@@ -104,16 +104,19 @@ To create the TCP version, I copied the UDP client-server project into a new fol
 
 ### Modify the Client Code
 **Changes:**
-- socket(AF_INET, SOCK_DGRAM, 0); -> socket(AF_INET, SOCK_STREAM, 0);
+
+- `socket(AF_INET, SOCK_DGRAM, 0)` → `socket(AF_INET, SOCK_STREAM, 0)`
+
 <img alt="8tcp" src="https://github.com/user-attachments/assets/bac8ea34-2f08-4d47-9ea9-8f2db424e00f" width="500" />
 
 
-- sendto → send
-- recvfrom → recv
+- `sendto()` → `send()`
+- `recvfrom()` → `recv()`
+
 <img alt="10tcp" src="https://github.com/user-attachments/assets/e9dbbafb-8ccb-49c4-8009-dcab38e09740" width="500" />
 
 **Add:**
-connect(sock, (sockaddr*)&serverAddr, sizeof(serverAddr));
+Add `connect()` before sending data.
 
 <img alt="9tcp" src="https://github.com/user-attachments/assets/215d8d91-de0e-443a-a897-84567c37b554" width="500" />
 
@@ -134,11 +137,6 @@ In the `run()` function:
 
 <img alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" width="500"/>
 
-### Establishing a TCP Connection
-
-Unlike UDP, TCP requires a connection before data can be exchanged. The client establishes the connection using `connect()`, and the server accepts it using `accept()`. Once the connection is established, both sides communicate using `send()` and `recv()`.
-
-
 
 ## Wireshark Analysis
 
@@ -154,11 +152,11 @@ Unlike UDP, TCP requires a connection before data can be exchanged. The client e
 9. Stop packet capture.
 
 ## UDP Traffic Analysis
-**Client** port: 65243
+**Client Port**: 65243
 
 <img alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" width="500" />
 
-**Server** port: 8080
+**Server Port**: 8080
 
 <img alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" width="500" />
 
@@ -212,14 +210,6 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 - **TCP prioritizes reliability.**
 
 
-## Summary
-
-Using Wireshark, I observed the differences between UDP and TCP communication.
-
-- UDP sends packets without establishing a connection.
-- TCP establishes a connection using the three-way handshake before exchanging data.
-- Both protocols showed very low RTT because the client and server were running on the same computer (`127.0.0.1`).
-
 ### TCP
 
 1. Open Wireshark.
@@ -246,8 +236,8 @@ Using Wireshark, I observed the differences between UDP and TCP communication.
 
 ### RTT
 
-- **Client Port:** 55865
-- **Server Port:** 8080
+- **Client Port**: 55865
+- **Server Port**: 8080
 
 Request Time: **160.733430500**
 
@@ -268,11 +258,11 @@ RTT = 160.733626900 − 160.733430500
 - The RTT was very small because the client and server were running on the same computer (`127.0.0.1`).
 
 
-## Question I Had
+## Questions I Had
 
 **Why do I only see one `SYN` and one `SYN, ACK` packet even though I sent six messages?**
 
-At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning. After the connection is established, the client and server can continue exchanging multiple messages without repeating the handshake.
+At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning of the connection. After the connection is established, the client and server can continue exchanging multiple messages without repeating the handshake.
 
 
 ## TCP vs UDP
@@ -311,7 +301,7 @@ The table below summarizes the key differences between UDP and TCP observed duri
 
 
 
-## Question I Had
+## Questions I Had
 
 **If UDP has to specify the server's IP address and port number every time, why is it faster than TCP?**
 
