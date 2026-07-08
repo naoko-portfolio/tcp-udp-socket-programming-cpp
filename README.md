@@ -50,11 +50,6 @@ server/
 
 ## UDP Communication Flow
 
-### UDP Request-Response Flow
-
-<img alt="7udp" src="https://github.com/user-attachments/assets/bb433b85-3ce2-40d0-a6df-608b4a9d0aca" width="250" />
-
-
 ### Implementation Steps
 
 1. Set up the server address
@@ -72,7 +67,6 @@ server/
 4. Display the server response
 
 <img alt="4" src="https://github.com/user-attachments/assets/839d44b8-11c7-45d0-bf26-b4e1dfc1e4da" width="500" />
-
 
 
 ### Client Output
@@ -93,7 +87,7 @@ server/
 
 ### Questions I had
 
-**What information allows the server to know where to send its reply?**
+**Q. What information allows the server to know where to send its reply?**
 
 `recvfrom()` provides the client's IP address, port number, and message. The server uses the IP address and port number to send the response back to the correct client.
 
@@ -187,12 +181,12 @@ RTT = 656.343351800 − 656.341608500
 
 ### Questions I Had
 
-**What is RTT?**
+**Q. What is RTT?**
 
 RTT (Round-Trip Time) is the time it takes for a request to travel from the client to the server and for the response to return to the client. A shorter RTT generally indicates faster network communication.
 
 
-**What do `Len=29`, `Len=31`, and `Len=26` mean?**
+**Q. What do `Len=29`, `Len=31`, and `Len=26` mean?**
 
 `Len` represents the size of the UDP payload (data) in bytes.
 
@@ -200,7 +194,7 @@ RTT (Round-Trip Time) is the time it takes for a request to travel from the clie
 - Response packets have different lengths (`Len=29`, `Len=31`, `Len=26`) because the server returns words of different lengths.
 
 
-**Why is TCP slower but more reliable than UDP?**
+**Q. Why is TCP slower but more reliable than UDP?**
 
 UDP is **connectionless**. It sends data without establishing a connection or confirming that the data has been delivered. This makes UDP fast, but packets may be lost or arrive out of order.
 
@@ -258,7 +252,7 @@ RTT = 160.733626900 − 160.733430500
 
 ### Questions I Had
 
-**Why do I only see one `SYN` and one `SYN, ACK` packet even though I sent six messages?**
+**Q. Why do I only see one `SYN` and one `SYN, ACK` packet even though I sent six messages?**
 
 At first, I thought TCP would check the connection every time I sent a message. However, I learned that TCP performs the three-way handshake only once at the beginning of the connection. After the connection is established, the client and server can continue exchanging multiple messages without repeating the handshake.
 
@@ -301,7 +295,7 @@ The table below summarizes the key differences between UDP and TCP observed duri
 
 ### Questions I Had
 
-**If UDP has to specify the server's IP address and port number every time, why is it faster than TCP?**
+**Q. If UDP has to specify the server's IP address and port number every time, why is it faster than TCP?**
 
 At first, I thought TCP would be faster because it remembers the server's address after `connect()`, while UDP specifies the destination address every time with `sendto()`.
 
