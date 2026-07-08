@@ -204,16 +204,6 @@ RTT (Round-Trip Time) is the time it takes for a request to travel from the clie
 - Response packets have different lengths (`Len=29`, `Len=31`, `Len=26`) because the server returns words of different lengths.
 
 
-**Q. Why is TCP slower but more reliable than UDP?**
-
-UDP is **connectionless**. It sends data without establishing a connection or confirming that the data has been delivered. This makes UDP fast, but packets may be lost or arrive out of order.
-
-TCP is **connection-oriented**. It first establishes a connection using `connect()`, then exchanges data through the established connection. TCP also acknowledges received data, making communication more reliable but slightly slower.
-
-**In short:**
-- **UDP prioritizes speed.**
-- **TCP prioritizes reliability.**
-
 ---
 
 ### TCP
@@ -273,15 +263,16 @@ Each time data is sent, the destination IP address and port number must be speci
 
 After connect(), the client uses send() and recv() without specifying IP address and port. The connection stays until it is closed.
 
-### RTT Observation
+### Key Differences Observed
 
-I measured the round-trip time (RTT) by calculating the time difference between a client request and the corresponding server response in Wireshark.
+During this project, I observed the following differences between UDP and TCP:
 
-**Observation**
-
-- The RTT values were very small because both the client and server were running on the same computer (`127.0.0.1`).
-- UDP and TCP both showed low RTT values in this local environment.
-- Therefore, RTT was useful for observing the request-response timing, but it was not suitable for comparing the real-world performance of UDP and TCP.
+- **UDP** sends data without establishing a connection.
+- **TCP** establishes a connection before exchanging data.
+- **UDP** requires the destination IP address and port number for every message.
+- **TCP** specifies the destination only once during connect().
+- **TCP** uses acknowledgements (ACK) to provide reliable delivery, while UDP does not.
+- **UDP** has lower communication overhead, while TCP provides higher reliability.
 
 The table below summarizes the key differences between UDP and TCP observed during this project.
 
@@ -303,7 +294,7 @@ The table below summarizes the key differences between UDP and TCP observed duri
 At first, I thought TCP would be faster because it remembers the server's address after `connect()`, while UDP specifies the destination address every time with `sendto()`.
 
 However, I learned that specifying the destination address takes very little time. The main reason TCP is slower is that it establishes a connection, acknowledges received data (ACK), retransmits lost packets when necessary, and guarantees reliable, ordered delivery. UDP skips these reliability features, making it much faster.
-The key takeaway is that UDP prioritizes speed, while TCP prioritizes reliability.
+The key takeaway is that **UDP prioritizes speed, while TCP prioritizes reliability.**
 
 
 ## Reflection
