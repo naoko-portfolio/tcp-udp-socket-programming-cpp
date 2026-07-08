@@ -48,7 +48,7 @@ server/
 
 
 
-## UDP Communication Flow
+## UDP Communication
 
 ### Implementation Steps
 
