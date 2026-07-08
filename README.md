@@ -136,6 +136,9 @@ In the `run()` function:
 ## Wireshark Analysis
 
 ### UDP
+
+<img width="473" height="322" alt="wireshark4" src="https://github.com/user-attachments/assets/3c706531-22cd-4456-86c1-818891f82658" />
+
 1. Open Wireshark.
 2. Select the loopback network adapter.
 3. Apply the display filter: `udp.port == 8080`.
@@ -207,6 +210,8 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 ---
 
 ### TCP
+
+<img width="791" height="348" alt="wireshark7" src="https://github.com/user-attachments/assets/7bd7ac99-5d41-4bb3-bc3f-ac35c3d91b52" />
 
 1. Open Wireshark.
 2. Select the loopback network adapter.
