@@ -137,9 +137,6 @@ In the `run()` function:
 
 ### UDP
 
-<img alt="wireshark4" src="https://github.com/user-attachments/assets/d884e475-f996-4a8b-ba0d-67dbe132794b" width="500" />
-
-
 1. Open Wireshark.
 2. Select the loopback network adapter.
 3. Apply the display filter: `udp.port == 8080`.
@@ -174,6 +171,8 @@ RTT = 656.343351800 − 656.341608500
 = **1.743 ms**
 
 ### Observations
+
+<img alt="wireshark4" src="https://github.com/user-attachments/assets/d884e475-f996-4a8b-ba0d-67dbe132794b" width="500" />
 
 - Each client request is immediately followed by a server response.
 - The server listens on port 8080, while the client uses a temporary port.
@@ -212,8 +211,6 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 
 ### TCP
 
-<img alt="wireshark7" src="https://github.com/user-attachments/assets/8a3e82c4-fdc7-43b6-9ee1-1b237805f150" width="500" />
-
 1. Open Wireshark.
 2. Select the loopback network adapter.
 3. Apply the display filter: `tcp.port == 8080`.
@@ -248,6 +245,8 @@ RTT = 160.733626900 − 160.733430500
 = **0.196 ms**
 
 ### Observations
+
+<img alt="wireshark7" src="https://github.com/user-attachments/assets/8a3e82c4-fdc7-43b6-9ee1-1b237805f150" width="500" />
 
 - TCP establishes a connection using the three-way handshake (`SYN` → `SYN, ACK` → `ACK`).
 - After the connection is established, multiple messages are exchanged without repeating the handshake.
