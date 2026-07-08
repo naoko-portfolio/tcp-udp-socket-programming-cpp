@@ -132,6 +132,15 @@ In the `run()` function:
 
 <img alt="12tcp" src="https://github.com/user-attachments/assets/871d5872-75f8-4650-aee3-0f26474f74e2" width="500"/>
 
+### Client Output
+
+<img alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" width="500" />
+
+### Server Output
+
+<img alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" width="500" />
+
+
 
 ## Wireshark Analysis
 
@@ -146,16 +155,6 @@ In the `run()` function:
 7. Send the following messages: `aa`, `az`, `ha`, `hz`, `ma`, `mz`.
 8. Enter `q` to terminate the client.
 9. Stop packet capture.
-
-### UDP Traffic Analysis
-**Client Port**: 65243
-
-<img alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" width="500" />
-
-**Server Port**: 8080
-
-<img alt="wireshark3" src="https://github.com/user-attachments/assets/7c6e16ef-531d-499a-b953-b45b4b65f8d4" width="500" />
-
 
 
 ### RTT
@@ -221,16 +220,6 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 8. Enter `q` to terminate the client.
 9. Stop packet capture.
 
-
-### TCP Traffic Analysis
-
-**Client Port**: 55865
-
-<img alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" width="500" />
-
-**Server Port**: 8080
-
-<img alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" width="500" />
 
 ### RTT
 
