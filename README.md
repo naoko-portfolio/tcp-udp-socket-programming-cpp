@@ -91,11 +91,12 @@ server/
 
 
 
-## Questions I had
+### Questions I had
 
 **What information allows the server to know where to send its reply?**
 
 `recvfrom()` provides the client's IP address, port number, and message. The server uses the IP address and port number to send the response back to the correct client.
+
 
 ## TCP Communication
 ### Converting UDP to TCP
@@ -151,7 +152,7 @@ In the `run()` function:
 8. Enter `q` to terminate the client.
 9. Stop packet capture.
 
-## UDP Traffic Analysis
+### UDP Traffic Analysis
 **Client Port**: 65243
 
 <img alt="wireshark2" src="https://github.com/user-attachments/assets/07e5ee61-746c-4f7c-8c27-93deda89c358" width="500" />
@@ -164,15 +165,15 @@ In the `run()` function:
 
 ### RTT
 
-Request Time: 656.341608500
+Request Time: **656.341608500**
 
-Response Time: 656.343351800
+Response Time: **656.343351800**
 
 RTT = 656.343351800 − 656.341608500
 
 = 0.001743300 sec
 
-= 1.743 ms
+= **1.743 ms**
 
 ### Observations
 
@@ -184,14 +185,14 @@ RTT = 656.343351800 − 656.341608500
 - No retransmissions were observed because UDP does not guarantee reliable delivery.
 
 
-## Questions I Had
+### Questions I Had
 
-### What is RTT?
+**What is RTT?**
 
 RTT (Round-Trip Time) is the time it takes for a request to travel from the client to the server and for the response to return to the client. A shorter RTT generally indicates faster network communication.
 
 
-### What do `Len=29`, `Len=31`, and `Len=26` mean?
+**What do `Len=29`, `Len=31`, and `Len=26` mean?**
 
 `Len` represents the size of the UDP payload (data) in bytes.
 
@@ -199,7 +200,7 @@ RTT (Round-Trip Time) is the time it takes for a request to travel from the clie
 - Response packets have different lengths (`Len=29`, `Len=31`, `Len=26`) because the server returns words of different lengths.
 
 
-### Why is TCP slower but more reliable than UDP?
+**Why is TCP slower but more reliable than UDP?**
 
 UDP is **connectionless**. It sends data without establishing a connection or confirming that the data has been delivered. This makes UDP fast, but packets may be lost or arrive out of order.
 
@@ -209,6 +210,7 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 - **UDP prioritizes speed.**
 - **TCP prioritizes reliability.**
 
+---
 
 ### TCP
 
@@ -222,22 +224,18 @@ TCP is **connection-oriented**. It first establishes a connection using `connect
 8. Enter `q` to terminate the client.
 9. Stop packet capture.
 
----
 
-## TCP Traffic Analysis
+### TCP Traffic Analysis
 
-### Client
+**Client Port**: 55865
 
 <img alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" width="500" />
 
-### Server
+**Server Port**: 8080
 
 <img alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" width="500" />
 
 ### RTT
-
-- **Client Port**: 55865
-- **Server Port**: 8080
 
 Request Time: **160.733430500**
 
@@ -258,7 +256,7 @@ RTT = 160.733626900 − 160.733430500
 - The RTT was very small because the client and server were running on the same computer (`127.0.0.1`).
 
 
-## Questions I Had
+### Questions I Had
 
 **Why do I only see one `SYN` and one `SYN, ACK` packet even though I sent six messages?**
 
@@ -301,7 +299,7 @@ The table below summarizes the key differences between UDP and TCP observed duri
 
 
 
-## Questions I Had
+### Questions I Had
 
 **If UDP has to specify the server's IP address and port number every time, why is it faster than TCP?**
 
@@ -322,7 +320,6 @@ This hands-on experience made networking much more interesting to me. I especial
 
 At the beginning of this project, I was confused about why `ls` did not work and why I had to use `dir`. I used to use a Mac and learned Linux at that time, so I was used to typing `ls`. Since I am now using Windows Command Prompt, I needed to use `dir` instead. After looking into the reason, I realized that `ls` is a Linux/macOS command, while `dir` is the equivalent command in Windows.
 
-## Skills Demonstrated
 
 ## Skills Demonstrated
 
