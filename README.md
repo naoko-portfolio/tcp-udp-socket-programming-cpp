@@ -78,6 +78,7 @@ server/
 
 
 ### Server Output
+
 - Received each request from the client.
 - Displayed the client's IP address, port number, and received message.
 
@@ -134,9 +135,16 @@ In the `run()` function:
 
 ### Client Output
 
+- Sent multiple messages (aa, az, ha, hz, ma, mz)
+- Received the closest matching word from the server.
+
 <img alt="wireshark5" src="https://github.com/user-attachments/assets/31e5019c-77fc-455f-bddf-bb7a39b8114f" width="500" />
 
 ### Server Output
+
+- Accepted the client's TCP connection.
+- Processed each request from the client.
+- Sent the closest matching word back to the client.
 
 <img alt="wireshark6" src="https://github.com/user-attachments/assets/706e8333-203a-42dd-9acd-38bfa237d8e5" width="500" />
 
