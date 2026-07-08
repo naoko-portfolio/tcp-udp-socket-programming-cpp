@@ -263,13 +263,13 @@ At first, I thought TCP would check the connection every time I sent a message. 
 
 ### UDP Connection
 
-<img width="287" height="335" alt="UDP connection" src="https://github.com/user-attachments/assets/b092997f-1f66-4adb-bb70-45b2b5af9ccb" />
+<img alt="UDP connection" src="https://github.com/user-attachments/assets/b092997f-1f66-4adb-bb70-45b2b5af9ccb" width="500"/>
 
 Each time data is sent, the destination IP address and port number must be specified
 
 ### TCP Connection
 
-<img width="289" height="377" alt="TCP connection" src="https://github.com/user-attachments/assets/72a6ba66-8ea2-4747-a05e-0717583c98a6" />
+<img alt="TCP connection" src="https://github.com/user-attachments/assets/72a6ba66-8ea2-4747-a05e-0717583c98a6" width="500"/>
 
 After connect(), the client uses send() and recv() without specifying IP address and port. The connection stays until it is closed.
 
